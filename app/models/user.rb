@@ -10,4 +10,6 @@ class User < ApplicationRecord
   validates :first_name_kana,  presence: true, format: { with: /\A[ぁ-んァ-ヶー一-龠々]+\z/, message: 'はカタカナで入力してください。' }
   validates :last_name_kana,   presence: true, format: { with: /\A[ぁ-んァ-ヶー一-龠々]+\z/, message: 'はカタカナで入力してください。' }
   validates :birthday,         presence: true
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
+  validates :encrypted_password, presence:true, format: { with: VALID_PASSWORD_REGEX }
 end
