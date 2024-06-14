@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_14_075650) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_14_081934) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -40,14 +40,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_14_075650) do
   end
 
   create_table "items", charset: "utf8", force: :cascade do |t|
-    t.string "title", null: false
-    t.text "detail", null: false
-    t.integer "price", null: false
+    t.string "title"
+    t.text "detale"
+    t.integer "price"
     t.bigint "user_id", null: false
-    t.integer "prefecture_id", null: false
-    t.integer "category_id", null: false
-    t.integer "shipping_fee_id", null: false
-    t.integer "delivery_scheduled_id", null: false
+    t.integer "category_id"
+    t.integer "prefecture_id"
+    t.integer "shipping_fee_id"
+    t.integer "delivery_scheduled_id"
+    t.integer "status_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
@@ -56,6 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_14_075650) do
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "nickname", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "first_name_kana", null: false
@@ -66,7 +68,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_14_075650) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "nickname"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
