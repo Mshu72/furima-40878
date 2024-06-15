@@ -13,8 +13,8 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :prefectures
-  belongs_to :categories
+  belongs_to :prefecture
+  belongs_to :category
   belongs_to :Shipping_fee
   belongs_to :delivery_scheduled
   belongs_to :status
