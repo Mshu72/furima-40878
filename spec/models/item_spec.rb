@@ -43,6 +43,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Priceは9999999以下の値にしてください")
       end
 
+      it '価格が全角数字では出品できない' do
+        @item.price = "５００"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Priceは数値で入力してください")
+      end
+
       it '価格が半角英字では出品できない' do
         @item.price = 'asdf'
         @item.valid?
