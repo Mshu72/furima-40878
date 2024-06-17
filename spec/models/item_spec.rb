@@ -96,6 +96,12 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Statuscan't be blank")
       end
+
+      it 'ユーザーが紐付いていなければ出品できない' do
+        @item.user = nil
+        expect(@item).to_not be_valid
+        expect(@item.errors[:user]).to include("を入力してください")
+      end
     end
   end
 end
