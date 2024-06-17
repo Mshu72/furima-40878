@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const tax = Math.floor(price * 0.1); // 手数料は価格の10%
-    const profit = price - tax;
+    const profit = Math.floor(price - tax);
 
     taxDisplay.textContent = tax;
     profitDisplay.textContent = profit;
