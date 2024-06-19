@@ -22,19 +22,19 @@ class ItemsController < ApplicationController
   def show
   end
 
-  def edit
-    if current_user.id!= @item.user_id
-      redirect_to root_path
-    end
-  end
+  # def edit
+  #   if current_user.id!= @item.user_id
+  #     redirect_to root_path
+  #   end
+  # end
 
-  def update
-    if @item.update(item_params)
-      redirect_to :show
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   if @item.update(item_params)
+  #     redirect_to :show
+  #   else
+  #     render :edit, status: :unprocessable_entity
+  #   end
+  # end
 
 
   private
