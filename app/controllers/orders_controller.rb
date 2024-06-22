@@ -3,14 +3,15 @@ class OrdersController < ApplicationController
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-    @order = Order.new
+    @order_receiver = OrderReceiver.new
+    @item = Item.find(params[:item_id])
   end
 
   def create
-    @order = Order.new(order_params)
-    if @order.valid?
+    @order_receiver = OrderReceiver.new(order_params)
+    if @order_receiver.valid?
       pay_item
-      @order.save
+      @order_receiver.save
       return redirect_to root_path
     else
       gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
@@ -21,7 +22,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:price).merge(token: params[:token])
+    params.require(:order_receiver).permit(:price_id, :user_id, :postal_code, :prefecture, :city, :address, :building, :phone_number).merge( token: params[:token])
   end
 
   def pay_item
