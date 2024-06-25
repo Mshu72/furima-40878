@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @order_receiver = OrderReceiver.new
     @item = Item.find(params[:item_id])
-    
+    @user = User.find(current_user.id)
   end
 
   def create
@@ -25,15 +25,15 @@ class OrdersController < ApplicationController
   private
 
   def order_receiver_params
-    params.require(:order_receiver).permit(:postal_code, :prefecture, :city, :address, :building, :phone_number).merge( token: params[:token])
+    params.require(:order_receiver).permit(:postal_code, :prefecture, :city, :address, :building, :phone_number).merge( user_id: params[:current_user_id], item_id: params[:item_id], token: params[:token])
   end
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
-    amount: order_receiver_params[:price],
-    card: order_receiver_params[:token],
-    currency: 'jpy'
+      amount: Item.find(params[:item_id]).price,
+      card: order_receiver_params[:token],
+      currency: 'jpy'
     )
   end
 end

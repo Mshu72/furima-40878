@@ -24,9 +24,9 @@ const pay = () => {
       cvcElement.clear();
       document.getElementById("charge-form").submit();
     });
-    e.preventDefault();
+    e.preventDefault();                /*フォーム送信処理はキャンセル*/
   });
 };
 
 window.addEventListener("turbo:load", pay)
-window.addEventListener("turbo:render", pay);
+window.addEventListener("turbo:render", pay)
