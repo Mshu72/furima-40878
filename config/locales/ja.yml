@@ -5,3 +5,15 @@ date:
       - :year
       - :month
       - :day
+
+devise:
+    sessions:
+      user:
+        signed_out: 'サインアウトしました'
+      signed_out: 'サインアウトしました'
+    # 他のDeviseの翻訳キーも必要に応じて追加します
+    failure:
+      unauthenticated: 'ログインが必要です'
+    registrations:
+      signed_up: 'サインアップしました。'
+      updated: 'アカウント情報が更新されました。'
