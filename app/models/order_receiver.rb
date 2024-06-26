@@ -9,6 +9,7 @@ class OrderReceiver
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: "は10桁以上11桁以内の半角数値で入力してください" }
     validates :token
     validates :item_id
+    validates :user_id
   end
   validates :prefecture, numericality: {other_than: 1, message: "を入力してください"}
 

@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :destroy]
 
@@ -24,6 +24,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if @item.order.present?
+      redirect_to root_path
+    end
   end
 
   def update
