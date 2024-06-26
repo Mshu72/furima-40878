@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe OrderReceiver, type: :model do
 
   before do
-    @order_receiver = FactoryBot.build(:order_receiver)
+    item = FactoryBot.create(:item)
+    user = FactoryBot.create(:user)
+    @order_receiver = FactoryBot.build(:order_receiver, item_id: item.id, user_id: user.id)
   end
 
   describe '商品購入' do
