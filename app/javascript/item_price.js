@@ -20,4 +20,4 @@ const item_price = () => {
 };
 
 document.addEventListener('turbo:load', item_price);
-document.addEventListener('turbo:render', item_price);
+window.addEventListener('turbo:render', item_price);
