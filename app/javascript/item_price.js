@@ -1,4 +1,4 @@
-document.addEventListener('turbo:load', () => {
+const item_price = () => {
   const priceInput = document.getElementById('item-price');
   const taxDisplay = document.getElementById('add-tax-price');
   const profitDisplay = document.getElementById('profit');
@@ -11,11 +11,13 @@ document.addEventListener('turbo:load', () => {
       return;
     }
 
-    const tax = Math.floor(price * 0.1); // 手数料は価格の10%
+    const tax = Math.floor(price * 0.1); 
     const profit = Math.floor(price - tax);
 
     taxDisplay.textContent = tax;
     profitDisplay.textContent = profit;
   });
-});
+};
 
+document.addEventListener('turbo:load', item_price);
+document.addEventListener('turbo:render', item_price);
