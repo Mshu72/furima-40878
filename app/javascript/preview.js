@@ -106,4 +106,3 @@ document.addEventListener('turbo:load', function(){
   // input要素で値の変化が起きた際に呼び出される関数
   fileField.addEventListener('change', changedFileField);
 });
-この章の
