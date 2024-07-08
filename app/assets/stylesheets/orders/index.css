@@ -35,6 +35,28 @@
   object-fit: contain;
 }
 
+/*追加実装*/
+.buy-item-other-images {
+  width: 100vw;
+  min-width: 1200px;
+  padding: 10vh 15vw;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.buy-item-other-img {
+  margin-right: 20px;
+  height: 130px;
+  width: 250px;
+  object-fit: contain;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/*追加実装*/
+
 .buy-item-right-content {
   display: flex;
   flex-direction: column;
